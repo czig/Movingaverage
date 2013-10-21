@@ -5,8 +5,6 @@
  * Description: Header file for moving average computation
  */
 
-
-
 int CalcAverage(int array[], int numberOfSamples);
 
 void shiftarray(int sample, int array[], int numberOfSamples);
