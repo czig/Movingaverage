@@ -5,7 +5,7 @@
  * Description: Implementation for moving average computation
  */
 
-#include "L22_Header.h"
+#include "moving_average.h"
 
 /*
  *Sums up all the numbers in the input array and
@@ -15,9 +15,11 @@
 int CalcAverage(int array[], int amountSamples){
 	int sum = 0;
 	int i;
+
 	for(i = 0; i < amountSamples; i++){
 		sum += array[i];
 	}
+
 	int avg = sum / amountSamples;
 
 	return avg;
@@ -29,9 +31,11 @@ int CalcAverage(int array[], int amountSamples){
  */
 void shiftarray(int number, int array[], int amountSamples){
 	int i;
+
 	for(i=0; i < amountSamples-1; i++){
 		array[i] = array[i+1]; // Move array to the right one place
 	}
+
 	array[amountSamples-1] = number; //Move the next number into the array
 }
 
@@ -44,12 +48,14 @@ void shiftarray(int number, int array[], int amountSamples){
  */
 int maximum(int* Numbers, int maximum, int size){
 	int i;
+
 	for(i = 0; i < size; i++){
 		if(*Numbers > maximum){
 			maximum = *Numbers;
 		}
-	Numbers++;
+        Numbers++;
 	}
+
 	return maximum;
 }
 
@@ -62,12 +68,14 @@ int maximum(int* Numbers, int maximum, int size){
  */
 int minimum(int* Numbers, int minimum, int size){
 	int i;
+
 	for(i = 0; i < size; i++){
 		if(*Numbers < minimum){
 			minimum = *Numbers;
 		}
 		Numbers++;
 	}
+
 	return minimum;
 }
 

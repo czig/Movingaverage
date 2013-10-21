@@ -4,11 +4,12 @@
   * Description: Computes the "moving average"
   * for a stream of data points it is receiving.
 *******************************************/
-#include <msp430.h> 
-#include "L22_header.h"
-#define N_AVG_SAMPLES 4
-#define SIZE 10 //Amount of numbers in number array
 
+#include <msp430.h> 
+#include "moving_average.h"
+
+#define N_AVG_SAMPLES 4
+#define SIZE 10                 //Amount of numbers in number array
 
 int main(void) {
     WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
@@ -18,8 +19,10 @@ int main(void) {
     int range;
     int numbers[] = {174, 162, 149, 85, 130, 149, 153, 164, 169, 173};
     int sampleArray[N_AVG_SAMPLES];  //Array that numbers are moved into and out of
-    Max = -256; // Lowest number possible for 1 byte, easily overwritten
-    Min = 255; // Highest number possible for 1 byte, easily overwritten
+
+    Max = -256;                 // Lowest number possible for 1 byte, easily overwritten
+    Min = 255;                  // Highest number possible for 1 byte, easily overwritten
+
     int i = 0;
     int x = 0;
     int avg;
@@ -34,7 +37,7 @@ int main(void) {
     }
 
     //Determine size of array
-   // int SizeOfArray = sizeof(numbers)/sizeof(int); //Number of bytes in numbers divided by number of bytes in int
+    // int SizeOfArray = sizeof(numbers)/sizeof(int); //Number of bytes in numbers divided by number of bytes in int
     int SizeOfArray = SIZE; //Can get by with only
 
     //Finds the average
@@ -50,7 +53,6 @@ int main(void) {
     range = CalculateRange(Max, Min);
 
 	while(1){} //Trap CPU
-
 
 	return 0;
 }
